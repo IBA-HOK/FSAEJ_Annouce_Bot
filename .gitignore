@@ -1,0 +1,6 @@
+.idea/
+node_modules/
+package-lock.json
+build/output.json
+.env
+output.json
