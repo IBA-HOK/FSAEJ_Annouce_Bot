@@ -15,7 +15,12 @@ request(options, function (error, response, body) {
         processor.push([h2[i].innerText.trim(), h2[i].getAttribute('href')]);
     }
     let path = "./output.json"
-    let input = JSON.parse(fs.readFileSync(path, 'utf8'))
+    let input;
+    try{
+        input = JSON.parse(fs.readFileSync(path, 'utf8'))
+    }catch (e){
+        input = []
+    }
     //inputにnewsを追記
     let postData;
     for (let i = 0; i < processor.length; i++) {
