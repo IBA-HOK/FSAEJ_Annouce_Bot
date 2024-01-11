@@ -1,15 +1,19 @@
 {
+  "name": "jsae_scraping",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+
   "dependencies": {
-    "@xmldom/xmldom": "^0.8.10",
     "dotenv": "^16.3.1",
-    "jsdom": "^23.0.1",
-    "node-cron": "^3.0.3",
     "node-html-parser": "^6.1.11",
-    "request": "^2.88.2",
-    "selenium-webdriver": "^4.15.0",
-    "xpath": "^0.0.33"
+    "request": "^2.88.2"
   },
   "scripts": {
-    "start": "node index.js"
-  }
+    "start": "node main.js"
+  },
+  "devDependencies": {},
+  "keywords": [],
+  "author": "",
+  "license": "CC0"
 }
