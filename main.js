@@ -7,7 +7,7 @@ const options = {
     method: 'GET'
 };
 
-function htmlSpecialParse(text) {
+function htmlSpecialParse(text) {//htmlの特殊文字を変換
     return text.split("&amp;").join("&").split("&lt;").join("<").split("&gt;").join(">").split("&quot;").join("\"").split("&#39;").join("'").split("&nbsp;").join(" ");
 }
 
@@ -32,8 +32,8 @@ function main() {
             input = []
         }
         let isNew = true;
-        //inputにnewsを追記
         let postData;
+
         for (let i = 0; i < processor.length; i++) {
             for (let j = 0; j < input.length; j++) {
                 isNew = true;
@@ -42,14 +42,15 @@ function main() {
                     break;
                 }
             }
+
             if (isNew) {
                 input.push(processor[i]);
-                //postTest.push(processor[i]);
                 postData = {
                     username: 'JSAE Announce BOT',
                     content: `${htmlSpecialParse(processor[i].name)}\n${processor[i].url}`
                 }
                 console.log(postData)
+
                 fetch(process.env.discord_hook, {
                     method: 'POST',
                     headers: {
@@ -57,7 +58,23 @@ function main() {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify(postData)
+                }).then(r => {
+                    if (r.status !== 204) {
+                        let errorPostData = {
+                            username: 'JSAE Announce BOT',
+                            content: `エラーが発生しました`
+                        }
+                        fetch(process.env.alart_hook, {
+                            method: 'POST',
+                            headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify(errorPostData)
+                        })
+                    }
                 })
+
             }
         }
         fs.writeFile('output.json', JSON.stringify(input), (err) => {
