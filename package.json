@@ -3,16 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "main": "main.js",
-
   "dependencies": {
     "dotenv": "^16.3.1",
+    "node-fetch": "^3.3.2",
     "node-html-parser": "^6.1.11",
     "request": "^2.88.2"
   },
   "scripts": {
     "start": "node main.js"
   },
-  "devDependencies": {},
   "keywords": [],
   "author": "",
   "license": "CC0"
