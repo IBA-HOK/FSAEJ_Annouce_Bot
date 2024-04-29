@@ -4,3 +4,4 @@ package-lock.json
 build/output.json
 .env
 output.json
+maintest.js
